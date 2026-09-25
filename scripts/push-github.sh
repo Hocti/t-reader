@@ -45,6 +45,16 @@ if ! git remote get-url origin >/dev/null 2>&1; then
   exit 1
 fi
 
+# This machine has no git user.name. Use the logged-in GitHub account for this commit only.
+if [[ -z "$(git config --get user.email || true)" || -z "$(git config --get user.name || true)" ]]; then
+  login="$(gh api user --jq .login)"
+  id="$(gh api user --jq .id)"
+  export GIT_AUTHOR_NAME="$login"
+  export GIT_AUTHOR_EMAIL="${id}+${login}@users.noreply.github.com"
+  export GIT_COMMITTER_NAME="$GIT_AUTHOR_NAME"
+  export GIT_COMMITTER_EMAIL="$GIT_AUTHOR_EMAIL"
+fi
+
 git add -A
 if ! git diff --cached --quiet; then
   git commit -m "$message"

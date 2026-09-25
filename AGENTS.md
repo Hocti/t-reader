@@ -29,9 +29,10 @@ Accepted and implemented:
 - Chinese comes first from `assets/dict/word.csv` (copied from `quick-read`, columns `word`, `lemmas`, `cefr`, `tc`). Inflections map to the headword through `lemmas` and common endings. When the list has no Chinese, the Chinese Wikipedia summary fills in, found through the English article's language link and asked for as `zh-hk`. English senses come from the Wiktionary REST API. `dictionaryapi.dev` was too slow (about 19 s, sometimes 522). These are public APIs, not our backend. Offline, only the built-in list shows.
 - The speak button uses the system voice in British English (`en-GB`) and pauses book speech first. The setting 點查時讀出字音 is with headphones (default), always, or never. Headphones come from the `epub_reader/audio` method channel in `MainActivity`. Bluetooth audio counts as headphones.
 - No bookstore, ever. No remote backend.
-- Archive and hide follow section 4 of the spec. They appear on a long-press menu, not as buttons on every book. Archive and hide stay on this device and do not sync. Default sort is last-read time, newest first. Modified date sorts by the file or folder mtime, newest first.
-- The bookshelf's top is one row: icon groups for view and sort, a filter selector button, then the search and settings icons. No title row.
-- The filter selector shows the current filter and opens a menu: 書櫃 (default, not archived), 閱讀中, 未開始 (never opened), 已完結 (progress 100%), 封存, 全部. The status filters leave out archived books. Hidden books never show. Saved as `filter` in `library_v1`; the old `showArchived` maps to 封存.
+- Archive and hide follow section 4 of the spec. They appear on a long-press menu, not as buttons on every book. Archive and hide stay on this device and do not sync. Default sort is last-read time, newest first. The other sorts are title and progress. The modified-date sort (the user calls it 加入時間) is commented out in the shelf row and in `_readJson`, not deleted; a saved `modified` falls back to last read.
+- The bookshelf's top is one row that never scrolls: icon groups for view and sort, an icon-only filter button, then the settings icon. No title row. Search is a round button floating at the bottom left; the list and grid leave room under the last book for it.
+- The filter button has no text; it is filled when the filter is not 書櫃. It opens a menu: 書櫃 (default, not archived), 閱讀中, 未開始 (never opened), 已完結, 封存, 全部.
+- Each shelf card shows a status box (`bookStatus`: 閱讀中, 未開始, 已完結 filled, 封存) before the last-read time. 已完結 means progress 100% or reaching the end chapter: `endChapter` in `book_text.dart` takes the first chapter in the last tenth by chapter count whose label contains 致謝, 版權, 註釋 or 譯者 (also 注釋 and the simplified forms). It is cached as `end` in `book_meta_v1` (-1 for none); a cache without `end` makes the book be read again once. The status filters leave out archived books. Hidden books never show. Saved as `filter` in `library_v1`; the old `showArchived` maps to 封存.
 - Progress is a percent. The first open measures characters and images per chapter, footnotes excluded (one image counts as 300 characters). The position inside a chapter is the text before the first sentence on the page. Books never measured fall back to chapter start over chapter count.
 - Title, chapter count, a cover thumbnail (max 360 px wide), and chapter weights are cached per book until its mtime or size changes. Thumbnails live in the app support folder under `covers/`.
 - Reopening a book returns to the saved chapter and sentence.
@@ -82,6 +83,7 @@ Do this before the final reply:
 | `docs/features.html` | Feature spec the user reviews |
 | `docs/plan-2-settings.md` | Draft prompt for settings not in the MVP. Not merged until the user says so |
 | `docs/plan-read-view.md` | Draft prompt for the reader. Not merged until the user says so |
+| `docs/google-drive-setup.md` | Traditional Chinese guide to registering the app in Google Cloud for Drive sync |
 | `progress.md` | This session only |
 | `changelog.md` | Old progress entries |
 | `assets/i18n/strings.csv` | UI languages. Columns: `key`, `zh-Hant`, `en` |

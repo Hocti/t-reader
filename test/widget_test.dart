@@ -21,9 +21,17 @@ void main() {
     await tester.pump();
     expect(library.view, ShelfView.grid);
 
-    await tester.tap(find.byIcon(Icons.update));
+    expect(find.byIcon(Icons.update), findsNothing);
+    await tester.tap(find.byIcon(Icons.sort_by_alpha));
     await tester.pump();
-    expect(library.sort, ShelfSort.modified);
+    expect(library.sort, ShelfSort.title);
+
+    await tester.tap(find.byIcon(Icons.search));
+    await tester.pump();
+    expect(find.byType(TextField), findsOneWidget);
+    await tester.tap(find.byIcon(Icons.search_off));
+    await tester.pump();
+    expect(find.byType(TextField), findsNothing);
 
     await tester.tap(find.byIcon(Icons.filter_list));
     await tester.pump();

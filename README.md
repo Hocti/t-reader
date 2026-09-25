@@ -2,10 +2,6 @@
 
 Android 閱讀 app。書櫃、一次一章的閱讀，和設定。
 
-點查的解釋、雲端朗讀、手錶控制還沒做。書店不會做，也沒有後端。
-
-功能以 [docs/features.html](docs/features.html) 為準。那份是繁中，可以直接改。
-
 ## 現在有什麼
 
 - 書櫃：掃描已加入的目錄。`.epub` 檔，或是裡面有 `mimetype` 的資料夾，各算一本書。只看目錄第一層。
@@ -14,8 +10,6 @@ Android 閱讀 app。書櫃、一次一章的閱讀，和設定。
 - 沒有動畫。
 
 ## 建置 Android 安裝檔
-
-本機的 Flutter SDK 在 `/home/hocti/sdk/flutter`，不在這個專案裡。
 
 在專案根目錄執行：
 
@@ -29,10 +23,6 @@ Android 閱讀 app。書櫃、一次一章的閱讀，和設定。
 ./scripts/build-android.sh --release
 ./scripts/build-android.sh --dl
 ```
-
-`--release` 會另外建置 release 版。`--dl` 會建置 release 版，並複製到 `/mnt/nas4/web/subdomains/dl/epub-reader-release.apk`。
-
-下載網址是 [https://dl.sitepreview.cc/epub-reader-release.apk](https://dl.sitepreview.cc/epub-reader-release.apk)。
 
 有 `android/key.properties` 時，debug 和 release 都用 `android/signing/` 裡的憑證。這兩個都已忽略、不進版控。這台機器還沒有這組憑證時，release 會改用 debug 簽章，仍然可以安裝。
 

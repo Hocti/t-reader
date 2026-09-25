@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:epub_reader/src/book_text.dart';
 import 'package:epub_reader/src/i18n.dart';
 import 'package:epub_reader/src/library.dart';
 import 'package:epub_reader/src/scan.dart';
@@ -138,6 +139,35 @@ void main() {
       emptyShelfNotice(directories: 1, books: 2, visible: 0, missing: 0, unreadable: 0, filter: ShelfFilter.finished)?.key,
       'shelf.empty_filter_none',
     );
+  });
+
+  test('the first end chapter in the last tenth marks the book finished', () {
+    final labels = [
+      '版權頁',
+      for (var n = 1; n <= 16; n++) '第$n章',
+      '譯者後記',
+      '致謝',
+      '註釋',
+    ];
+    expect(endChapter(labels), 18);
+    expect(endChapter([...labels, '索引']), 18);
+    expect(endChapter([...labels.take(17), '後記', '譯者', '致謝']), 18);
+    expect(endChapter(['版權', '一', '二', '三']), isNull);
+    expect(endChapter(['一', '二', '致谢']), 2);
+    expect(endChapter(const []), isNull);
+
+    final book = ShelfBook(path: '/a', zipped: true, fallbackTitle: '甲')
+      ..lastRead = DateTime(2026)
+      ..chapterIndex = 16
+      ..readProgress = 0.85
+      ..endChapter = 17;
+    expect(bookStatus(book), BookStatus.reading);
+    book.chapterIndex = 17;
+    expect(bookStatus(book), BookStatus.finished);
+    expect(bookPassesFilter(book, ShelfFilter.finished), isTrue);
+    book.archived = true;
+    expect(bookStatus(book), BookStatus.archived);
+    expect(bookStatus(ShelfBook(path: '/b', zipped: true, fallbackTitle: '乙')), BookStatus.unstarted);
   });
 
   test('opened books without a folder are not called a missing folder', () {

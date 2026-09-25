@@ -8,6 +8,7 @@ cd "$root"
 
 do_release=0
 message=""
+message_given=0
 
 usage() {
   cat <<'EOF'
@@ -32,6 +33,7 @@ for arg in "$@"; do
         exit 1
       fi
       message="$arg"
+      message_given=1
       ;;
   esac
 done
@@ -68,15 +70,13 @@ if [[ "$do_release" -ne 1 ]]; then
   exit 0
 fi
 
-disk=/run/media/hocti/92C4A6B3C4A698CD
-if [[ ! -d "$disk" ]]; then
-  echo "Samsung SSD 沒有掛上，不建置 release。" >&2
-  exit 1
-fi
-
+# The SSD holds the sandbox Gradle cache. A normal terminal build uses ~/.gradle, so a missing disk does not stop the release.
 "$root/scripts/sandbox-cache-on-ssd.sh"
-export GRADLE_USER_HOME="$disk/cursor-sandbox-cache/gradle"
-mkdir -p "$GRADLE_USER_HOME"
+disk=/run/media/hocti/92C4A6B3C4A698CD
+if [[ -d "$disk" ]]; then
+  export GRADLE_USER_HOME="$disk/cursor-sandbox-cache/gradle"
+  mkdir -p "$GRADLE_USER_HOME"
+fi
 
 flutter_bin="${FLUTTER_ROOT:-/home/hocti/sdk/flutter}/bin/flutter"
 if [[ ! -x "$flutter_bin" ]]; then
@@ -105,7 +105,11 @@ fi
 
 tag="v$version"
 asset_name="t-reader-${version%%+*}.apk"
-notes="Release APK for T Reader $version."
+if [[ "$message_given" -eq 1 ]]; then
+  notes="$message"
+else
+  notes="Release APK for T Reader $version."
+fi
 
 if gh release view "$tag" >/dev/null 2>&1; then
   gh release upload "$tag" "$release_apk#$asset_name" --clobber

@@ -1,0 +1,48 @@
+# Build
+build/
+**/build/
+
+# Cache
+.cache/
+**/.cache/
+.dart_tool/
+.pub-cache/
+.pub/
+.gradle/
+**/.gradle/
+android/.kotlin/
+
+# Temp
+tmp/
+temp/
+**/tmp/
+**/temp/
+*.tmp
+*.temp
+*.swp
+*~
+
+# Demo
+demo/
+
+# Flutter / Android generated
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+**/local.properties
+**/GeneratedPluginRegistrant.java
+**/GeneratedPluginRegistrant.swift
+
+# Temporary Android signing cert. Replace later. Do not commit.
+*.p12
+*.jks
+*.keystore
+android/key.properties
+android/signing/
+
+# Packages and IDE junk
+*.apk
+*.aab
+*.iml
+.idea/
+.DS_Store

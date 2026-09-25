@@ -1,0 +1,200 @@
+key,zh-Hant,en
+common.back,返回,Back
+common.close,關閉,Close
+common.cancel,取消,Cancel
+common.save,儲存,Save
+common.settings,設定,Settings
+shelf.title,書櫃,Bookshelf
+shelf.archived,封存,Archived
+shelf.view,檢視,View
+shelf.sort,排序,Sort
+shelf.list,列表,List
+shelf.grid,網格,Grid
+shelf.sort_recent,最近閱讀,Recent
+shelf.sort_title,書名,Title
+shelf.sort_progress,進度,Progress
+shelf.sort_modified,修改日期,Modified
+shelf.unread,尚未閱讀,Not opened
+shelf.archive,封存,Archive
+shelf.unarchive,取消封存,Unarchive
+shelf.hide,隱藏,Hide
+shelf.progress,進度,Progress
+shelf.progress_value,進度 {label},Progress {label}
+shelf.dir_missing,這個目錄不存在：{path},This folder does not exist: {path}
+shelf.dir_unreadable,這個目錄讀不到：{path},This folder cannot be read: {path}
+shelf.empty_no_dir,還沒有目錄。請按右上角的設定圖示加入書的目錄。,No folders yet. Use the settings icon at the top right to add one.
+shelf.empty_missing_one,這個目錄不存在。,This folder does not exist.
+shelf.empty_missing_many,這些目錄都不存在。,None of these folders exist.
+shelf.empty_unreadable_one,這個目錄讀不到。,This folder cannot be read.
+shelf.empty_unreadable_many,這些目錄都讀不到。,None of these folders can be read.
+shelf.empty_one,這個目錄是空的。,This folder is empty.
+shelf.empty_many,這些目錄裡沒有書。,There are no books in these folders.
+shelf.search,搜尋書櫃,Search the bookshelf
+shelf.search_hint,書名,Title
+shelf.search_none,找不到「{query}」。,"Nothing matches ""{query}""."
+shelf.empty_filtered,"書都已封存或隱藏。可以顯示封存，或到設定恢復隱藏的書。","Every book is archived or hidden. Show archived books, or restore hidden ones in Settings."
+settings.title,設定,Settings
+settings.folders,書的目錄,Book folders
+settings.no_folders,還沒有目錄。,No folders yet.
+settings.remove,移除,Remove
+settings.add_folder,加入目錄,Add folder
+settings.theme,主題,Theme
+settings.theme_help,"白和黑是完全黑白，預設是白。淺色和深色略有顏色。","White and black are pure black and white. White is the default. Light and dark have a little color."
+settings.theme_white,白,White
+settings.theme_black,黑,Black
+settings.theme_light,淺色,Light
+settings.theme_dark,深色,Dark
+settings.language,介面語言,Language
+settings.hidden,已隱藏,Hidden
+settings.none_hidden,沒有隱藏的書。,No hidden books.
+settings.restore,恢復,Restore
+settings.hidden_count,{n} 本,{n} books
+settings.lookup_speak,點查時讀出字音,Say the word on lookup
+settings.lookup_speak_headphones,用耳機時,With headphones
+settings.lookup_speak_always,每次,Always
+settings.lookup_speak_never,不讀,Never
+lookup.say,讀出字音,Say the word
+lookup.loading,正在查網上字典。,Checking online dictionaries.
+lookup.offline,連不上網路，只顯示內建字典。,No connection. Showing the built-in dictionary only.
+lookup.none,找不到這個字的解釋。,No explanation found for this word.
+lookup.chinese,中文解釋,Chinese
+lookup.english,英文解釋,English
+lookup.wiki,維基百科,Wikipedia
+lookup.base_form,原形 {word},Base form: {word}
+lookup.source_dict,中文：內建字典,Chinese: built-in word list
+lookup.source_online,英文：Wiktionary；百科：Wikipedia（CC BY-SA）,English: Wiktionary. Encyclopedia: Wikipedia (CC BY-SA)
+settings.version,目前版本,Version
+lang.zh-Hant,繁體中文,繁體中文
+lang.en,English,English
+folder.title,加入目錄,Add folder
+folder.checking,正在確認讀取權限。,Checking storage permission.
+folder.need_access,"需要允許讀取所有檔案，才能加入本機目錄。允許之後回到這裡。","Allow access to all files before adding a folder on this device. Come back here after allowing it."
+folder.allow,允許讀取,Allow access
+folder.up,上一層,Up
+folder.use,使用這個目錄,Use this folder
+folder.unreadable,這個目錄讀不到。,This folder cannot be read.
+folder.empty,這裡沒有子目錄。可以直接使用這個目錄。,No subfolders here. You can use this folder.
+book.missing_path,這個路徑不存在。,This path does not exist.
+book.no_container,這本書沒有 META-INF/container.xml。,This book has no META-INF/container.xml.
+book.bad_package,這本書的包裝檔讀不到。,This book's package file cannot be read.
+book.bad_opf,這本書的目錄格式不對。,This book's contents list is not valid.
+book.no_chapters,這本書沒有可以顯示的章節。,This book has no chapters to show.
+book.damaged,這本書打不開。檔案可能已損壞。,This book cannot be opened. The file may be damaged.
+book.opening,正在開啟這一章。,Opening this chapter.
+reader.shelf,書櫃,Bookshelf
+reader.search,搜尋,Search
+reader.bookmark,放書籤,Place bookmark
+reader.unbookmark,抽起書籤,Take out bookmark
+reader.add_tag,加標籤,Add tag
+reader.tags,標籤,Tags
+reader.no_tags,還沒有標籤。,No tags yet.
+reader.find,搜尋,Search
+reader.find_google,Google,Google
+reader.find_wiki,維基百科,Wikipedia
+reader.find_book,書中搜尋,In this book
+tag.name,標籤名稱,Tag name
+tag.remove,刪除,Delete
+reader.layout,版面,Layout
+reader.toc,目錄,Contents
+reader.marks,劃線,Highlights
+reader.speech,朗讀,Speech
+reader.copy,複製,Copy
+reader.highlight,劃線,Highlight
+reader.collapse,收合,Collapse
+reader.expand,展開,Expand
+reader.no_marks,還沒有劃線。,No highlights yet.
+reader.temp_mark,回到臨時書籤,Back to the temporary bookmark
+reader.play,播放,Play
+reader.pause,暫停,Pause
+reader.stop,停止,Stop
+reader.prev_sentence,上一句,Previous sentence
+reader.next_sentence,下一句,Next sentence
+reader.more,更多,More
+layout.margin,左右邊界,Left and right margins
+layout.margin_v,上下邊界,Top and bottom margins
+layout.narrow,窄,Narrow
+layout.normal,標準,Normal
+layout.wide,寬,Wide
+layout.writing,橫直排,Direction
+layout.horizontal,橫排,Horizontal
+layout.vertical,直排,Vertical
+layout.font,字型,Font
+layout.sans,黑體,Sans
+layout.serif,明體,Serif
+layout.size,字級,Size
+layout.small,小,Small
+layout.smaller,偏小,Smaller
+layout.larger,偏大,Larger
+layout.large,大,Large
+layout.line,行距,Line spacing
+layout.tight,緊,Tight
+layout.loose,鬆,Loose
+layout.theme,主題,Theme
+layout.turn,翻頁方式,Turning
+layout.page,翻頁,Page
+layout.scroll,捲動,Scroll
+speech.source,來源,Source
+speech.system,系統,System
+speech.cloud_off,雲端（不能選）,Cloud (unavailable)
+speech.language,語言,Language
+speech.yue,廣東話,Cantonese
+speech.cmn,國語,Mandarin
+speech.en,英文,English
+speech.no_voice,這支手機沒有對應的系統語音。,This phone has no matching system voice.
+speech.pace,速度,Speed
+speech.slow,慢,Slow
+speech.slower,偏慢,Slower
+speech.faster,偏快,Faster
+speech.fast,快,Fast
+speech.channel,朗讀,Speech
+search.hint,搜尋這本書,Search this book
+search.busy,正在搜尋。,Searching.
+search.none,找不到。,No matches.
+search.count,{n} 筆結果,{n} results
+search.limit,只列出前 {n} 筆,Showing the first {n}
+shelf.filter_shelf,書櫃,Shelf
+shelf.filter_reading,閱讀中,Reading
+shelf.filter_unstarted,未開始,Not started
+shelf.filter_finished,已完結,Finished
+shelf.filter_archived,封存,Archived
+shelf.filter_all,全部,All
+shelf.filter_label,篩選：{filter},Filter: {filter}
+shelf.empty_filter_none,這個篩選沒有書。,No books match this filter.
+settings.on,開,On
+settings.off,關,Off
+settings.keep_awake,閱讀時螢幕不休眠,Keep the screen on while reading
+settings.open_last,開 app 時打開上次正在讀的書,Open the last book when the app starts
+settings.data,閱讀資料,Reading data
+settings.data_help,"每本書的進度、劃線和標籤各存成一個 JSON 檔，檔名是書名，全部放在這個目錄。","Each book's progress, highlights, and tags are saved as one JSON file named after the book, all in this folder."
+settings.data_change,更改目錄,Change folder
+settings.data_default,改回 app 內的目錄,Use app storage
+settings.drive,Google Drive,Google Drive
+settings.drive_help,"把閱讀資料同步到 Google Drive 的「EPUB Reader」資料夾。不同裝置登入同一個帳號，就會同步進度、劃線和標籤。","Syncs the reading data with the EPUB Reader folder on Google Drive. Devices signed in to the same account share progress, highlights, and tags."
+drive.connect,連接 Google Drive,Connect Google Drive
+drive.disconnect,中斷連接,Disconnect
+drive.sync_now,立即同步,Sync now
+drive.busy,正在同步。,Syncing.
+drive.off,未連接。,Not connected.
+drive.never,已連接，還沒同步。,"Connected, not synced yet."
+drive.synced,上次同步：{time},Last synced: {time}
+drive.signed_out,要重新登入 Google。,Sign in to Google again.
+drive.offline,連不上 Google Drive。,Cannot reach Google Drive.
+drive.failed,同步失敗。,Sync failed.
+drive.not_set_up,"這個 app 還沒在 Google Cloud 登記，所以 Google 拒絕登入。","This app is not registered in Google Cloud yet, so Google refused the sign-in."
+reader.unhighlight,移除劃線,Remove highlight
+reader.images,圖片,Images
+reader.no_images,這本書沒有圖片。,This book has no images.
+reader.images_loading,正在找書中的圖片。,Finding the images in this book.
+reader.book_start,最頭,Start
+reader.prev_chapter,上章,Prev chapter
+reader.next_chapter,下章,Next chapter
+reader.brightness,光度,Brightness
+reader.brightness_system,跟隨系統,System
+reader.turn_screen,螢幕方向,Screen direction
+turn.auto,自動旋轉,Auto-rotate
+turn.portrait,直向,Portrait
+turn.landscape,橫向,Landscape
+turn.landscape_flipped,反向橫向,"Landscape, flipped"
+layout.columns,欄數,Columns
+layout.one_column,單欄,One
+layout.two_columns,雙欄,Two

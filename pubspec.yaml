@@ -1,0 +1,36 @@
+name: epub_reader
+description: Android EPUB reader with a bookshelf, a one-chapter reader, and settings.
+publish_to: "none"
+version: 0.1.0+1
+
+environment:
+  sdk: ">=3.3.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  archive: 3.6.1
+  package_info_plus: ^8.3.0
+  path: ^1.9.1
+  permission_handler: ^11.4.0
+  shared_preferences: ^2.5.3
+  shelf: ^1.4.2
+  flutter_tts: ^4.2.3
+  webview_flutter: ^4.13.0
+  xml: ^6.5.0
+  audio_service: ^0.18.19
+  path_provider: ^2.1.6
+  url_launcher: ^6.3.2
+  google_sign_in: ^6.2.1
+  http: ^1.2.0
+
+dev_dependencies:
+  flutter_lints: ^6.0.0
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/i18n/strings.csv
+    - assets/dict/word.csv

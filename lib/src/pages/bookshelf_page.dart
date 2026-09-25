@@ -101,104 +101,102 @@ class _BookshelfPageState extends State<BookshelfPage> with WidgetsBindingObserv
     ShelfNotice? message,
   ) {
     return SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(12, 8, 2, 8),
-              child: Row(
-                children: [
-                  IconChoiceGroup(
-                    options: [
-                      IconChoice(
-                        icon: Icons.view_list_outlined,
-                        label: tr(context, 'shelf.list'),
-                        selected: library.view == ShelfView.list,
-                        onPressed: () => library.setView(ShelfView.list),
-                      ),
-                      IconChoice(
-                        icon: Icons.grid_view,
-                        label: tr(context, 'shelf.grid'),
-                        selected: library.view == ShelfView.grid,
-                        onPressed: () => library.setView(ShelfView.grid),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(width: 8),
-                  IconChoiceGroup(
-                    options: [
-                      IconChoice(
-                        icon: Icons.history,
-                        label: tr(context, 'shelf.sort_recent'),
-                        selected: library.sort == ShelfSort.lastRead,
-                        onPressed: () => library.setSort(ShelfSort.lastRead),
-                      ),
-                      IconChoice(
-                        icon: Icons.sort_by_alpha,
-                        label: tr(context, 'shelf.sort_title'),
-                        selected: library.sort == ShelfSort.title,
-                        onPressed: () => library.setSort(ShelfSort.title),
-                      ),
-                      IconChoice(
-                        icon: Icons.percent,
-                        label: tr(context, 'shelf.sort_progress'),
-                        selected: library.sort == ShelfSort.progress,
-                        onPressed: () => library.setSort(ShelfSort.progress),
-                      ),
-                      // Sorting by the file's modified (added) date is off for now, to keep the row short.
-                      // IconChoice(
-                      //   icon: Icons.update,
-                      //   label: tr(context, 'shelf.sort_modified'),
-                      //   selected: library.sort == ShelfSort.modified,
-                      //   onPressed: () => library.setSort(ShelfSort.modified),
-                      // ),
-                    ],
-                  ),
-                  const SizedBox(width: 8),
-                  _FilterButton(library: library),
-                  const Spacer(),
-                  Semantics(
-                    button: true,
-                    label: tr(context, 'common.settings'),
-                    child: GestureDetector(
-                      onTap: () => pushPage(context, const SettingsPage()),
-                      behavior: HitTestBehavior.opaque,
-                      child: const Padding(
-                        padding: EdgeInsets.all(10),
-                        child: Icon(Icons.settings_outlined, size: 22),
-                      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Padding(
+            padding: const EdgeInsets.fromLTRB(12, 8, 2, 8),
+            child: Row(
+              children: [
+                IconChoiceGroup(
+                  options: [
+                    IconChoice(
+                      icon: Icons.view_list_outlined,
+                      label: tr(context, 'shelf.list'),
+                      selected: library.view == ShelfView.list,
+                      onPressed: () => library.setView(ShelfView.list),
+                    ),
+                    IconChoice(
+                      icon: Icons.grid_view,
+                      label: tr(context, 'shelf.grid'),
+                      selected: library.view == ShelfView.grid,
+                      onPressed: () => library.setView(ShelfView.grid),
+                    ),
+                  ],
+                ),
+                const SizedBox(width: 8),
+                IconChoiceGroup(
+                  options: [
+                    IconChoice(
+                      icon: Icons.history,
+                      label: tr(context, 'shelf.sort_recent'),
+                      selected: library.sort == ShelfSort.lastRead,
+                      onPressed: () => library.setSort(ShelfSort.lastRead),
+                    ),
+                    IconChoice(
+                      icon: Icons.sort_by_alpha,
+                      label: tr(context, 'shelf.sort_title'),
+                      selected: library.sort == ShelfSort.title,
+                      onPressed: () => library.setSort(ShelfSort.title),
+                    ),
+                    IconChoice(
+                      icon: Icons.percent,
+                      label: tr(context, 'shelf.sort_progress'),
+                      selected: library.sort == ShelfSort.progress,
+                      onPressed: () => library.setSort(ShelfSort.progress),
+                    ),
+                    // Sorting by the file's modified (added) date is off for now, to keep the row short.
+                    // IconChoice(
+                    //   icon: Icons.update,
+                    //   label: tr(context, 'shelf.sort_modified'),
+                    //   selected: library.sort == ShelfSort.modified,
+                    //   onPressed: () => library.setSort(ShelfSort.modified),
+                    // ),
+                  ],
+                ),
+                const SizedBox(width: 8),
+                _FilterButton(library: library),
+                const Spacer(),
+                Semantics(
+                  button: true,
+                  label: tr(context, 'common.settings'),
+                  child: GestureDetector(
+                    onTap: () => pushPage(context, const SettingsPage()),
+                    behavior: HitTestBehavior.opaque,
+                    child: const Padding(
+                      padding: EdgeInsets.all(10),
+                      child: Icon(Icons.settings_outlined, size: 22),
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-            if (_query != null) _searchRow(colors),
-            Expanded(
-              child: query.isNotEmpty && visible.isEmpty && shelf.isNotEmpty
-                  ? Padding(
-                      padding: const EdgeInsets.all(16),
-                      child: Text(
-                        tr(context, 'shelf.search_none', {'query': query}),
-                        style: const TextStyle(fontSize: 16, height: 1.4),
-                      ),
-                    )
-                  : visible.isEmpty
-                  ? _EmptyShelf(message: message, library: library)
-                  : Column(
-                      children: [
-                        for (final path in library.missing) _DirNote(keyName: 'shelf.dir_missing', path: path),
-                        for (final path in library.unreadable)
-                          _DirNote(keyName: 'shelf.dir_unreadable', path: path),
-                        Expanded(
-                          child: library.view == ShelfView.grid
-                              ? _BookGrid(books: visible)
-                              : _BookList(books: visible),
-                        ),
-                      ],
+          ),
+          if (_query != null) _searchRow(colors),
+          Expanded(
+            child: query.isNotEmpty && visible.isEmpty && shelf.isNotEmpty
+                ? Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Text(
+                      tr(context, 'shelf.search_none', {'query': query}),
+                      style: const TextStyle(fontSize: 16, height: 1.4),
                     ),
-            ),
-          ],
-        ),
+                  )
+                : visible.isEmpty
+                    ? _EmptyShelf(message: message, library: library)
+                    : Column(
+                        children: [
+                          for (final path in library.missing) _DirNote(keyName: 'shelf.dir_missing', path: path),
+                          for (final path in library.unreadable) _DirNote(keyName: 'shelf.dir_unreadable', path: path),
+                          Expanded(
+                            child:
+                                library.view == ShelfView.grid ? _BookGrid(books: visible) : _BookList(books: visible),
+                          ),
+                        ],
+                      ),
+          ),
+        ],
+      ),
     );
   }
 
@@ -412,8 +410,7 @@ class _EmptyShelf extends StatelessWidget {
           Text(tr(context, 'shelf.dir_unreadable', {'path': path}), style: const TextStyle(fontSize: 14)),
           const SizedBox(height: 8),
         ],
-        if (message != null)
-          Text(tr(context, message!.key), style: const TextStyle(fontSize: 16, height: 1.4)),
+        if (message != null) Text(tr(context, message!.key), style: const TextStyle(fontSize: 16, height: 1.4)),
       ],
     );
   }
@@ -474,7 +471,7 @@ class BookCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = colorsOf(context);
     final progress = progressLabel(book);
-    final when = formatReadTime(book.lastRead) ?? tr(context, 'shelf.unread');
+    final when = formatReadTime(book.lastRead);
     final size = grid ? 14.0 : 16.0;
     final details = <Widget>[
       // Two lines of room even for a short title, so every cover above is the same height.
@@ -488,7 +485,23 @@ class BookCard extends StatelessWidget {
         ),
       ),
       const SizedBox(height: 4),
-      Text(when, maxLines: 1, style: TextStyle(color: colors.muted, fontSize: 12)),
+      Row(
+        children: [
+          _StatusLabel(status: bookStatus(book)),
+          if (when != null) ...[
+            const SizedBox(width: 8),
+            Flexible(
+              child: Text(
+                when,
+                maxLines: 1,
+                overflow: TextOverflow.clip,
+                softWrap: false,
+                style: TextStyle(color: colors.muted, fontSize: 12),
+              ),
+            ),
+          ],
+        ],
+      ),
       const SizedBox(height: 8),
       StaticProgressBar(value: book.progress, label: progress),
     ];
@@ -517,6 +530,41 @@ class BookCard extends StatelessWidget {
                   ),
                 ],
               ),
+      ),
+    );
+  }
+}
+
+const _statusKeys = {
+  BookStatus.reading: 'shelf.filter_reading',
+  BookStatus.unstarted: 'shelf.filter_unstarted',
+  BookStatus.finished: 'shelf.filter_finished',
+  BookStatus.archived: 'shelf.filter_archived',
+};
+
+/// 閱讀中, 未開始, 已完結 or 封存 in a small outlined box. Finished is filled.
+class _StatusLabel extends StatelessWidget {
+  const _StatusLabel({required this.status});
+
+  final BookStatus status;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = colorsOf(context);
+    final filled = status == BookStatus.finished;
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        color: filled ? colors.fill : colors.paper,
+        border: Border.all(color: colors.line),
+        borderRadius: BorderRadius.circular(4),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 1),
+        child: Text(
+          tr(context, _statusKeys[status]!),
+          maxLines: 1,
+          style: TextStyle(fontSize: 12, height: 1.3, color: filled ? colors.onFill : colors.ink),
+        ),
       ),
     );
   }
